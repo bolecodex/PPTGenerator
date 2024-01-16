@@ -1,9 +1,6 @@
 from pptx import Presentation
 from pptx.util import Inches, Pt
 
-# Create a presentation object
-prs = Presentation()
-
 # Updated slide data
 slides_data = [
     {
@@ -26,24 +23,47 @@ slides_data = [
     }
 ]
 
-# Function to add a slide
-def add_slide(title, content):
-    slide_layout = prs.slide_layouts[1]  # Using layout 1 for title and content
-    slide = prs.slides.add_slide(slide_layout)
-    title_placeholder = slide.shapes.title
-    body_placeholder = slide.placeholders[1]
+def generate_ppt(slides_data, output_file_name):
+    """
+    Creates a PowerPoint presentation from the given slides data.
 
-    title_placeholder.text = title
-    tf = body_placeholder.text_frame
-    tf.text = content
+    Args:
+    slides_data (list of dict): A list of dictionaries, each representing a slide's content.
+    output_file_name (str): The name of the file to save the presentation.
 
-    for paragraph in tf.paragraphs:
-        for run in paragraph.runs:
-            run.font.size = Pt(18)
+    Returns:
+    Presentation: The PowerPoint presentation object.
+    """
+    prs = Presentation()
 
-# Add slides
-for slide in slides_data:
-    add_slide(slide['title'], slide['content'])
+    def add_slide(prs, title, content):
+        """
+        Adds a slide to the presentation with the given title and content.
 
-# Save the presentation
-prs.save('Marie_Curie_Presentation.pptx')
+        Args:
+        prs (Presentation): The PowerPoint presentation object.
+        title (str): The title of the slide.
+        content (str): The content of the slide.
+        """
+        slide_layout = prs.slide_layouts[1]  # Using layout 1 for title and content
+        slide = prs.slides.add_slide(slide_layout)
+        title_placeholder = slide.shapes.title
+        body_placeholder = slide.placeholders[1]
+
+        title_placeholder.text = title
+        tf = body_placeholder.text_frame
+        tf.text = content
+
+        for paragraph in tf.paragraphs:
+            for run in paragraph.runs:
+                run.font.size = Pt(18)
+
+    # Add slides based on the provided data
+    for slide in slides_data:
+        add_slide(prs, slide['title'], slide['content'])
+
+    # Save the presentation
+    prs.save(output_file_name)
+    return prs
+
+generate_ppt(slides_data, 'Albert_Einstein_Presentation.pptx')

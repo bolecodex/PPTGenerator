@@ -1,0 +1,19 @@
+service: serverless-fastapi
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: ap-northeast-1
+
+functions:
+  api:
+    handler: app.handler
+    events:
+      - httpApi: '*'
+    environment:
+      OPENAI_API_KEY: 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
+      # OPENAI_API_KEY: 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
+    timeout: 30
+plugins:
+  - serverless-python-requirements

@@ -1,0 +1,16 @@
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip install python-pptx
+pip install bs4
+pip install streamlit_chat
+pip install langchain
+pip install tiktoken
+
+openai==0.27.8
+langchain==0.0.225
+streamlit==1.24.0
+streamlit_chat==0.1.1
+bs4==0.0.1
+youtube-transcript-api==0.6.1
+pytube==15.0.0
+tiktoken==0.5.2
+PyPDF2==3.0.1
