@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 # URL of the webpage to summarize
 url = 'https://www.dawn.com/news/1805010/upheaval-in-top-judiciary-as-justice-ijazul-ahsan-resigns-a-day-after-justice-naqvi'
@@ -20,4 +21,11 @@ def web_scraping(url):
         print('something wrong')
         return None
         
-print(web_scraping(url))
+# print(web_scraping(url))
+
+def validate_url(url):
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except ValueError:
+        return False

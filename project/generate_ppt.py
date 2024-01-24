@@ -2,26 +2,26 @@ from pptx import Presentation
 from pptx.util import Inches, Pt
 
 # Updated slide data
-slides_data = [
-    {
-        "slide_number": 1.0,
-        "title": "Introduction to Albert Einstein",
-        "content": "Albert Einstein was born on March 14, 1879 in Ulm, in the Kingdom of Württemberg in the German Empire. He is best known for developing the theory of relativity, which revolutionized the understanding of space, time, and gravity.",
-        "narration": ""
-    },
-    {
-        "slide_number": 2.0,
-        "title": "Einstein's Contributions to Science",
-        "content": "• E=mc^2: The mass-energy equivalence.\n• Theory of General relativity: This led to prediction of the deflection of light by gravity, concept of black holes and Big Bang theory.\n• Quantum Theory: Einstein made important contributions to early quantum theory.",
-        "narration": ""
-    },
-    {
-        "slide_number": 3.0,
-        "title": "Einstein's Legacy",
-        "content": "Einstein's work continues to influence the course of science to this day. His theories have been instrumental in developing GPS technology and understanding the universe. He was awarded the Nobel Prize in Physics in 1921.",
-        "narration": ""
-    }
-]
+# slides_data = [
+#     {
+#         "slide_number": 1.0,
+#         "title": "Introduction to Albert Einstein",
+#         "content": "Albert Einstein was born on March 14, 1879 in Ulm, in the Kingdom of Württemberg in the German Empire. He is best known for developing the theory of relativity, which revolutionized the understanding of space, time, and gravity.",
+#         "narration": ""
+#     },
+#     {
+#         "slide_number": 2.0,
+#         "title": "Einstein's Contributions to Science",
+#         "content": "• E=mc^2: The mass-energy equivalence.\n• Theory of General relativity: This led to prediction of the deflection of light by gravity, concept of black holes and Big Bang theory.\n• Quantum Theory: Einstein made important contributions to early quantum theory.",
+#         "narration": ""
+#     },
+#     {
+#         "slide_number": 3.0,
+#         "title": "Einstein's Legacy",
+#         "content": "Einstein's work continues to influence the course of science to this day. His theories have been instrumental in developing GPS technology and understanding the universe. He was awarded the Nobel Prize in Physics in 1921.",
+#         "narration": ""
+#     }
+# ]
 
 def generate_ppt(slides_data, output_file_name):
     """
@@ -66,4 +66,4 @@ def generate_ppt(slides_data, output_file_name):
     prs.save(output_file_name)
     return prs
 
-generate_ppt(slides_data, 'Albert_Einstein_Presentation.pptx')
+# generate_ppt(slides_data, 'Albert_Einstein_Presentation.pptx')
