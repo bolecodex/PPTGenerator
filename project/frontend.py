@@ -8,6 +8,7 @@ from generate_ppt import generate_ppt
 from ppt_to_json import ppt_to_json
 from text_summarization import text_summarization
 from upload_ppt_to_google_drive import upload_ppt_to_google_drive
+from download_ppt_from_google_drive import download_ppt_from_google_drive
 from web_scraping import web_scraping,validate_url
 from generate_json import generate_json
 from read_word_file import read_word_file
@@ -45,7 +46,7 @@ if (uploaded_file is not None) & ('Executed' not in st.session_state):
     st.session_state['output_file_name'] = output_file_name
     generate_ppt(slides_data=slides_data, output_file_name=output_file_name)
     webViewLink = upload_ppt_to_google_drive(credentials_path='service-account-credentials.json', file_path=str(output_file_name), file_name=str(output_file_name))
-    
+    st.session_state['webViewLink'] = webViewLink
     st.info('🎈 Presentation Deck of '+ output_file_name)
     components.iframe(webViewLink, height=480)
     st.session_state['Executed'] = True
@@ -60,15 +61,19 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     text = st.session_state['text']
     output_file_name = st.session_state['output_file_name']
+    webViewLink = st.session_state['webViewLink']
+    download_ppt_from_google_drive(credentials_path='service-account-credentials.json', web_view_link=webViewLink, download_path=output_file_name)
     slideDeck = ppt_to_json(output_file_name)
     print(slideDeck)
     slides_data = generate_json(word_content=text, prompt=prompt, slideDeck=slideDeck)
     generate_ppt(slides_data=slides_data, output_file_name=output_file_name)
     webViewLink = upload_ppt_to_google_drive(credentials_path='service-account-credentials.json', file_path=str(output_file_name), file_name=str(output_file_name))
     msg = "The PPT has already updated"
+    st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
     
     st.title('🎈 New Presentation Deck of '+ output_file_name)

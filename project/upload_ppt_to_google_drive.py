@@ -28,9 +28,9 @@ def upload_ppt_to_google_drive(credentials_path, file_path, file_name):
     return updated_file.get("webViewLink")
 
 # Use the function
-# credentials_path = 'service-account-credentials.json'  # Replace with your path
-# file_path = 'Marie_Curie_Presentation.pptx'                # Replace with your file path and extension
-# file_name = 'Marie_Curie_Presentation.pptx'              # Replace with your file name
+credentials_path = 'service-account-credentials.json'  # Replace with your path
+file_path = 'Albert_Einstein_Presentation.pptx'                # Replace with your file path and extension
+file_name = 'Albert_Einstein_Presentation.pptx'              # Replace with your file name
 
-# webViewLink = upload_ppt_to_google_drive(credentials_path, file_path, file_name)
-# print(f'File URL: {webViewLink}')
+webViewLink = upload_ppt_to_google_drive(credentials_path, file_path, file_name)
+print(f'File URL: {webViewLink}')

@@ -4,6 +4,11 @@ pip install bs4
 pip install streamlit_chat
 pip install langchain
 pip install tiktoken
+pip install PyPDF2 python-docx
+pip install pycryptodome
+pip install IPython 
+pip install tabulate
+pip install boto3
 
 openai==0.27.8
 langchain==0.0.225
@@ -14,3 +19,12 @@ youtube-transcript-api==0.6.1
 pytube==15.0.0
 tiktoken==0.5.2
 PyPDF2==3.0.1
+
+
+boto3==1.33.6
+faiss-cpu==1.7.4
+langchain==0.0.345
+pypdf==3.15.2
+st-pages==0.4.4
+streamlit==1.29.0
+duckduckgo-search==3.9.3
